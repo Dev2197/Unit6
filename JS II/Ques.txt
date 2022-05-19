@@ -1,0 +1,11 @@
+What is the difference of JS from browser to JS on node.js?
+Node Js is a open-source JavaScript runtime environment that enables JavaScript to be run on the server.
+
+What is the difference of JS from browser to JS on node.js
+JavaScript is used to develop dynamic and web applications.
+It works in any browser that has a proper browser engine. 
+It is generally used on the client-side.
+Node Js is a open-source JavaScript runtime environment that enables JavaScript to be run on the server-side.
+
+
+What is shallow equal?
