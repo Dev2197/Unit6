@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL SHORTNER</title>
+
+    <style>
+        body{
+            background-image: url("https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        }
+        table{
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+        th,td{
+            text-align: center;
+            padding: 15px;
+            /* border: 1px solid red; */
+        }
+        input{
+            height: 30px;
+            width: 300px;
+        }
+        button{
+            background-color: blue;
+            color: white;
+            width: 100px;
+            height: 32px;
+            border: none;
+            font-weight: 700;
+        }
+        .title{
+            display: flex;
+
+        }
+        .form{
+            margin-top: 25px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>URL SHORTNER</h1>
+         <form action="/short" method="POST" class="form">
+        <input type="url" placeholder="Shorten Your Link" name="longUrl" required>
+        <button type="submit">Shorten</button>
+        </form>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="color: red; font-weight: bold;">Full URL</th>
+                    <th style="color: green; font-weight: bold;">Short URL</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- <% urls.forEach(e=>{ %>
+
+                    <tr>
+                        <td><a href="<%=e.full %>"><%=e.full %></a></td>
+                        <td><a href="<%=e.short %>"><%=e.short %></a></td>
+                    </tr>
+               <% }) %> -->
+
+              
+
+                <tr>
+                    <td><a href="<%=urls[urls.length-1].full %>"><%=urls[urls.length-1].full %></a></td>
+                    <td><a href="<%=urls[urls.length-1].short %>">tinyurl/<%=urls[urls.length-1].short %></a></td>
+                </tr>
+          
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
