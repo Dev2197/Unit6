@@ -1,0 +1,7 @@
+thead,th,td,tr{
+    border: 1px solid;
+    width: 100px;
+}
+table{
+    margin: auto;
+}

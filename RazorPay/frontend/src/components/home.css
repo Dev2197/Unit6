@@ -1,0 +1,28 @@
+.nav{
+    display: flex;
+    background-color: red;
+    margin-bottom: 30px;
+}
+img{
+    width: 200px;
+    margin-left: 70px;
+    margin-right: 500px;
+}
+h4{
+    cursor: pointer;
+    color: black;
+}
+input{
+    width: 200px;
+    height: 30px;
+}
+button{
+    width: 100px;
+    height: 35px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    margin-left: 30px;
+    cursor: pointer;
+}
