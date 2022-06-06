@@ -1,0 +1,11 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+.productimag{
+    width: 100%;
+}
+.price{
+    font-weight: bold;
+}
