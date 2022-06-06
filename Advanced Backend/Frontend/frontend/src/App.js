@@ -27,7 +27,7 @@ function App() {
   useEffect(()=>{
     if(brand != "" && price!= "")
     {
-      console.log(brand,price)
+      // console.log(brand,price)
        navigate(`Mens/${brand}&${price}`)   
     }
   },[price,brand])
@@ -43,13 +43,16 @@ const getdata = async()=>{
     
     setTotalPages(data.totalPages)
 }
+
+const sorting = (e)=>{
+  setPrice(e.target.value)
+  navigate(`/${e.target.value}/page/${pageNumber+1}`)
+}
   return (
     <div className="App">
       
       <div >
-        <select onChange={(e)=>{ setPrice(e.target.value)
-          navigate(`/${e.target.value}`)
-        }}>
+        <select onChange={sorting}>
           <option value="" disabled selected>Sort By Price</option>
           <option value="desc">High To Low</option>
           <option value="asc">Low To High</option>
@@ -71,7 +74,9 @@ const getdata = async()=>{
         <Route path="/" element={<Home />}></Route>
         <Route path={`page/:id`} element={<Home />}></Route>
         <Route path='/asc' element={<Asc />}></Route>
+        <Route path='/asc/page/:id' element={<Asc />}></Route>
         <Route path='/desc' element={<Desc />}></Route>
+        <Route path='/desc/page/:id' element={<Desc />}></Route>
         <Route path="/Brand/:id" element={<FilterByBrand />}></Route>
         <Route path={`Mens/:id`} element={<FilterAndSort />}></Route>
       </Routes>

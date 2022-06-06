@@ -5,6 +5,7 @@
 }
 .productimag{
     width: 100%;
+    height: 400px;
 }
 .price{
     font-weight: bold;

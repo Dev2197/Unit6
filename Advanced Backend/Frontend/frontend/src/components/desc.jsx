@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import './home.css'
 
 export const Desc = ()=>{
     const [items, setItems] = useState([])
+    const params = useParams()
 
     useEffect(()=>{
         getdata()
-    },[])
+    },[params.id])
 
     
 
     const getdata = async()=>{
-        const data = await fetch("http://localhost:5000/mensdata/desc").then((d)=>d.json())
+        const data = await fetch(`http://localhost:5000/mensdata/desc?page=${params.id-1}`).then((d)=>d.json())
         // console.log(data)
-        setItems(data)
+        setItems(data.mensdata)
     }
     return (
         <div className="card">

@@ -4,20 +4,18 @@ import './home.css'
 
 export const Home = ()=>{
     const [items, setItems] = useState([])
-    const [pageNumber,setPageNumber] = useState(0)
     const params = useParams()
     console.log(params)
     
 
     useEffect(()=>{
-        setPageNumber(params.id-1)
         getdata()
-    },[pageNumber,params.id])
+    },[params.id])
 
     
 
     const getdata = async()=>{
-        const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
+        const data = await fetch(`http://localhost:5000/mensdata?page=${params.id-1}`).then((d)=>d.json())
         // console.log(data)
         setItems(data.mensdatas)
         

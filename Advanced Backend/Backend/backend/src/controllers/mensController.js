@@ -22,13 +22,16 @@ router.get("/",async(req,res)=>{
 
 router.get("/asc",async(req,res)=>{
     try {
-        const mensdata = await Mensdata.find().lean().exec()
+        const total = await Mensdata.countDocuments({})
+        const page = parseInt(req.query.page || 0)
+        const page_size = 13;
+        const mensdata=await Mensdata.find().limit(page_size).skip(page*page_size).lean().exec();
 
         mensdata.sort((a,b)=>{
             return a.price-b.price
         })
-
-        return res.status(200).send(mensdata)
+        
+        return res.status(200).send({mensdata,totalPages:Math.ceil(total/page_size)})
     } catch (error) {
         return res.status(400).send(err.message);
     }
@@ -36,13 +39,16 @@ router.get("/asc",async(req,res)=>{
 
 router.get("/desc",async(req,res)=>{
     try {
-        const mensdata = await Mensdata.find().lean().exec()
+        const total = await Mensdata.countDocuments({})
+        const page = parseInt(req.query.page || 0)
+        const page_size = 13;
+        const mensdata=await Mensdata.find().limit(page_size).skip(page*page_size).lean().exec();
 
         mensdata.sort((a,b)=>{
             return b.price-a.price
         })
-
-        return res.status(200).send(mensdata)
+        
+        return res.status(200).send({mensdata,totalPages:Math.ceil(total/page_size)})
     } catch (error) {
         return res.status(400).send(err.message);
     }
