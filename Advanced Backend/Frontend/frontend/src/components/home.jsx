@@ -3,20 +3,26 @@ import './home.css'
 
 export const Home = ()=>{
     const [items, setItems] = useState([])
+    const [pageNumber,setPageNumber] = useState(0)
+    console.log(pageNumber)
+    const [totalPages,setTotalPages] = useState()
+    const pages = new Array(totalPages).fill(0)
 
     useEffect(()=>{
         getdata()
-    },[])
+    },[pageNumber])
 
     
 
     const getdata = async()=>{
-        const data = await fetch("http://localhost:5000/mensdata").then((d)=>d.json())
+        const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
         // console.log(data)
-        setItems(data)
+        setItems(data.mensdatas)
+        setTotalPages(data.totalPages)
     }
     return (
-        <div className="card">
+        <div>
+            <div className="card">
             {
                 items.map((e,i)=>(
                     <div key={i}>
@@ -27,6 +33,12 @@ export const Home = ()=>{
                     </div>
                 ))
             }
+        </div>
+        {pages.map((p,i)=>(
+            <button onClick={()=>{
+              setPageNumber(i)
+            }}>{i+1}</button>
+          ))}
         </div>
     )
 }

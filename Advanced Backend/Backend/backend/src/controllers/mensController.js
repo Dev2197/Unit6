@@ -6,8 +6,12 @@ const router=express.Router();
 
 router.get("/",async(req,res)=>{
     try{
-        const mensdatas=await Mensdata.find().lean().exec();
-        return res.status(200).send(mensdatas)
+        const total = await Mensdata.countDocuments({})
+        const page = parseInt(req.query.page || 0)
+        const page_size = 13;
+        const mensdatas=await Mensdata.find().limit(page_size).skip(page*page_size).lean().exec();
+        
+        return res.status(200).send({mensdatas,totalPages:Math.ceil(total/page_size)})
     }
     catch(err){
         console.log(err.message);
