@@ -9,10 +9,10 @@ import { Home } from './components/home';
 
 function App() {
 
-  // const [pageNumber,setPageNumber] = useState(0)
+  const [pageNumber,setPageNumber] = useState(0)
   // console.log(pageNumber)
-  // const [totalPages,setTotalPages] = useState()
-  // const pages = new Array(totalPages).fill(0)
+  const [totalPages,setTotalPages] = useState()
+  const pages = new Array(totalPages).fill(0)
   const navigate = useNavigate()
   const [brand,SetBrand] = useState("")
   const [price,setPrice] = useState("")
@@ -27,22 +27,22 @@ function App() {
   useEffect(()=>{
     if(brand != "" && price!= "")
     {
-      // console.log(brand,price)
+      console.log(brand,price)
        navigate(`Mens/${brand}&${price}`)   
     }
   },[price,brand])
 
-//   useEffect(()=>{
-//     getdata()
-// },[])
+  useEffect(()=>{
+    getdata()
+},[pageNumber])
 
 
 
-// const getdata = async()=>{
-//     const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
+const getdata = async()=>{
+    const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
     
-//     setTotalPages(data.totalPages)
-// }
+    setTotalPages(data.totalPages)
+}
   return (
     <div className="App">
       
@@ -69,17 +69,19 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path={`page/:id`} element={<Home />}></Route>
         <Route path='/asc' element={<Asc />}></Route>
         <Route path='/desc' element={<Desc />}></Route>
         <Route path="/Brand/:id" element={<FilterByBrand />}></Route>
         <Route path={`Mens/:id`} element={<FilterAndSort />}></Route>
       </Routes>
 
-      {/* {pages.map((p,i)=>(
+      {pages.map((p,i)=>(
         <button onClick={()=>{
           setPageNumber(i)
+          navigate(`page/${i+1}`)
         }}>{i+1}</button>
-      ))} */}
+      ))}
     </div>
   );
 }

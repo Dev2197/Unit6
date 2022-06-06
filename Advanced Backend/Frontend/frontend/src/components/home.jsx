@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import './home.css'
 
 export const Home = ()=>{
     const [items, setItems] = useState([])
     const [pageNumber,setPageNumber] = useState(0)
-    console.log(pageNumber)
-    const [totalPages,setTotalPages] = useState()
-    const pages = new Array(totalPages).fill(0)
+    const params = useParams()
+    console.log(params)
+    
 
     useEffect(()=>{
+        setPageNumber(params.id-1)
         getdata()
-    },[pageNumber])
+    },[pageNumber,params.id])
 
     
 
@@ -18,10 +20,10 @@ export const Home = ()=>{
         const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
         // console.log(data)
         setItems(data.mensdatas)
-        setTotalPages(data.totalPages)
+        
     }
     return (
-        <div>
+        
             <div className="card">
             {
                 items.map((e,i)=>(
@@ -34,11 +36,6 @@ export const Home = ()=>{
                 ))
             }
         </div>
-        {pages.map((p,i)=>(
-            <button onClick={()=>{
-              setPageNumber(i)
-            }}>{i+1}</button>
-          ))}
-        </div>
+        
     )
 }
