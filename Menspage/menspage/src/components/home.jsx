@@ -12,14 +12,14 @@ export const Home = ()=>{
 
     const getdata = async()=>{
         const data = await fetch("http://localhost:5000/mensdata").then((d)=>d.json())
-        console.log(data)
+        // console.log(data)
         setItems(data)
     }
     return (
         <div className="card">
             {
-                items.map((e)=>(
-                    <div >
+                items.map((e,i)=>(
+                    <div key={i}>
                         <img className="productimag" src={e.imageURL} alt="" />
                         <p>Brand:{e.Brand}</p>
                         <p>{e.productName}</p>

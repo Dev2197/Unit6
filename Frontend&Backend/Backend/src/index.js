@@ -10,7 +10,6 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/mensdata', mensController)
-app.use('/mensdata',mensController)
-app.use('/mensdata',mensController)
+
 
 module.exports = app;
