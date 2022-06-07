@@ -8,8 +8,10 @@ router.get("/",async(req,res)=>{
     try{
         const total = await Mensdata.countDocuments({})
         const page = parseInt(req.query.page || 0)
+        // console.log(req.query.page)
         const page_size = 13;
         const mensdatas=await Mensdata.find().limit(page_size).skip(page*page_size).lean().exec();
+        // console.log(mensdatas)
         
         return res.status(200).send({mensdatas,totalPages:Math.ceil(total/page_size)})
     }
@@ -90,6 +92,19 @@ router.get("/filterandsort/:id",async(req,res)=>{
             return res.status(200).send(result)
         }
         
+    } catch (error) {
+        return res.status(400).send(err.message);
+    }
+})
+
+router.get("/category/:id",async (req,res)=>{
+    try {
+        const mensdata = await Mensdata.find().lean().exec()
+        // console.log(mensdata)
+
+        const result = mensdata.filter(data=> data.itemCategory== req.params.id)
+        
+        return res.status(200).send(result)
     } catch (error) {
         return res.status(400).send(err.message);
     }
