@@ -36,8 +36,8 @@
     transform: rotate(360deg);
   }
 }
-.notActive{
-  color: red;
-  pointer-events: none;
-  cursor: pointer;
+button{
+  width: 50px;
+  margin-bottom: 50px;
+  margin-right: 2px;
 }
