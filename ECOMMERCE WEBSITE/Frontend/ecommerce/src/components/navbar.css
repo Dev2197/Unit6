@@ -1,0 +1,12 @@
+.navbar{
+    display: flex;
+    background-color: blue;
+    color: white;
+    height: 50px;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-around;
+}
+.navbar > div {
+    cursor: pointer;
+}

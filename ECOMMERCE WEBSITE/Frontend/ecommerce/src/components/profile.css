@@ -1,0 +1,25 @@
+.profileContainer{
+    display: flex;
+}
+.profilePic{
+    margin-top: 50px;
+    margin-left: 150px;
+    width: 250px;
+}
+.profilePic > img{
+    width: 100%;
+}
+.userDetails{
+    margin-top: -10px;
+    margin-left: 100px;
+}
+.detailsBox{
+    border: 1px solid;
+    width: 200px;
+    height: 30px;
+    margin-top: 0px;
+    padding: 5px;
+}
+.userTitle{
+    margin-bottom: 5px;
+}

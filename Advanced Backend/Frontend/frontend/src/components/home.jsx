@@ -5,7 +5,7 @@ import './home.css'
 export const Home = ()=>{
     const [items, setItems] = useState([])
     const params = useParams()
-    console.log(params)
+    // console.log(params)
     
 
     useEffect(()=>{
