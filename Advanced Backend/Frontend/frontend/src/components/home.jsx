@@ -15,7 +15,7 @@ export const Home = ()=>{
     
 
     const getdata = async()=>{
-        const data = await fetch(`http://localhost:5000/mensdata?page=${params.id-1}`).then((d)=>d.json())
+        const data = await fetch(`https://protected-brushlands-51342.herokuapp.com/mensdata?page=${params.id-1}`).then((d)=>d.json())
         // console.log(data)
         setItems(data.mensdatas)
         

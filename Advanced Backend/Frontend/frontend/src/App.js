@@ -40,7 +40,7 @@ function App() {
 
 
 const getdata = async()=>{
-    const data = await fetch(`http://localhost:5000/mensdata?page=${pageNumber}`).then((d)=>d.json())
+    const data = await fetch(`https://protected-brushlands-51342.herokuapp.com/mensdata?page=${pageNumber}`).then((d)=>d.json())
     
     setTotalPages(data.totalPages)
 }
